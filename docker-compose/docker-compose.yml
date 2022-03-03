@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  springapp:
+    image: dockerhandson/spring-boot-mongo
+    ports:
+    - 8080:8080
+    container_name: springmong
+    networks:
+    - springappnetwork
+  mongo:
+    image: mongo
+    volumes:
+    - mongobkp:/data/db
+    container_name: mongo
+    networks:
+    - springappnetwork
+
+volumes:
+  mongobkp:
+
+networks:
+  springappnetwork:
