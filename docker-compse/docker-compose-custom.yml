@@ -1,0 +1,21 @@
+version: "3"
+services:
+  springboot:
+    image: dockerhandson/spring-boot-mongo
+    container_name: springboot
+    ports:
+    - 8080:8080
+  mongo:
+    image: mongo
+    container_name: mongo
+    volumes:
+    - mongobkp:/data/db
+
+volumes:
+  mongobkp:
+    external: true
+
+networks:
+  default:
+    external:
+      name: springappnetwork
